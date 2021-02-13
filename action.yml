@@ -18,10 +18,10 @@ jobs:
           if: ${{github.event_name != 'pull_request'}}
           run: echo "no dependabot"
         - uses: actions/checkout@v2
-          if: ${{github.event.pull_request.user.login  == 'dependabot[bot]' || github.event.pull_request.user.login  == 'app/dependabot'}}
+          if: ${{github.event.pull_request.user.login  == 'dependabot[bot]' || github.event.pull_request.user.login  == 'app/dependabot' || github.event.pull_request.user.login  == 'app/dependabot-preview'}}
           
         - name: Open issue if Dependabot PR
-          if: ${{github.event.pull_request.user.login  == 'dependabot[bot]' || github.event.pull_request.user.login  == 'app/dependabot'}}
+          if: ${{github.event.pull_request.user.login  == 'dependabot[bot]' || github.event.pull_request.user.login  == 'app/dependabot' || github.event.pull_request.user.login  == 'app/dependabot-preview'}}
           env:
             pr_title: ${{github.event.pull_request.title}}
             pr_number: ${{github.event.pull_request.number}}
